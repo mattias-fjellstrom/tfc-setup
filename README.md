@@ -54,5 +54,5 @@ jobs:
           organization: ${{ env.ORGANIZATION }}
           project: ${{ env.PROJECT }}
           workspace: ${{ env.WORKSPACE }}
-      - uses: mattias-fjellstrom/tfc-destroy-workspace@v1
+      - uses: mattias-fjellstrom/tfc-delete-workspace@v1
 ```
