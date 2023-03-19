@@ -1,0 +1,39 @@
+name: Set up environment variables for working with Terraform Cloud
+author: Mattias Fjellström (mattias.fjellstrom [at] gmail.com)
+description: >
+  Create a number of convenience environment variables to simplify working
+  with Terraform Cloud
+
+inputs:
+  token:
+    required: true
+    description: An API token for Terraform Cloud
+  organization:
+    required: false
+    description: Terraform Cloud organization name
+  project:
+    required: false
+    description: Terraform cloud project name
+  workspace:
+    required: false
+    description: Terraform Cloud workspace name
+
+runs:
+  using: composite
+  steps:
+    - name: Set the authentication token
+      shell: bash
+      run: echo "TERRAFORM_CLOUD_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
+    - name: Set the organization name
+      shell: bash
+      run: echo "TERRAFORM_CLOUD_ORGANIZATION=${{ inputs.organization }}" >> $GITHUB_ENV
+    - name: Set the project name
+      shell: bash
+      run: echo "TERRAFORM_CLOUD_PROJECT=${{ inputs.project }}" >> $GITHUB_ENV
+    - name: Set the workspace name
+      shell: bash
+      run: echo "TERRAFORM_CLOUD_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
+
+branding:
+  icon: star
+  color: blue
